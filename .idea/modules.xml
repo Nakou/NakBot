@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NakBot.iml" filepath="$PROJECT_DIR$/.idea/modules/NakBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NakBot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/NakBot_main.iml" group="NakBot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NakBot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/NakBot_test.iml" group="NakBot" />
+    </modules>
+  </component>
+</project>
