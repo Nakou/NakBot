@@ -1,6 +1,17 @@
 {
   "tokens":{
-    "discord":"",
-    "slack":""
-  }
+    "discord":"SECRET",
+    "slack":"SECRET"
+  },
+  "commands":["roll", "help"],
+  "autoresponses":[
+    {
+      "keys" : "Ahoy, ahooy",
+      "values" : ["Capitaine sur le pont!", "Captain on the bridge!"]
+    },
+    {
+      "keys":  "Hello world",
+      "values": ["System.out.println(\"Hello world\");"]
+    }
+  ]
 }

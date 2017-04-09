@@ -1,14 +1,11 @@
-package Engines;
-
-import Commands.ICommand;
+package Commands;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Created by Nakou on 07/04/2017.
+ * Created by Nakou on 08/04/2017.
  */
-public class Roll implements IEngine {
-
+public class Roll implements ICommand{
     @Override
     public String action(String argument) {
         if(argument.split("").length > 1);
