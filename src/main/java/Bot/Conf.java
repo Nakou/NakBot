@@ -1,5 +1,6 @@
 package Bot;
 
+import net.dv8tion.jda.core.JDA;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,6 +18,8 @@ public class Conf {
      */
     static Conf instance;
     static String confFile = "resources.json";
+
+    JDA jda;
 
     JSONObject baseJson;
 
@@ -46,11 +49,15 @@ public class Conf {
     }
 
     public String getSlackToken(){
-        return baseJson.getString("slack");
+        return baseJson.getJSONObject("tokens").getString("slack");
+    }
+
+    public String getGuildId(){
+        return baseJson.getJSONObject("tokens").getString("guildId");
     }
 
     public String getDiscordToken(){
-        return baseJson.getString("discord");
+        return baseJson.getJSONObject("tokens").getString("discord");
     }
 
     public List<String> getCommands(){
@@ -80,5 +87,9 @@ public class Conf {
             retValue.put(keys, values);
         }
         return retValue;
+    }
+
+    public JDA getJdaConnector(){
+        return jda;
     }
 }

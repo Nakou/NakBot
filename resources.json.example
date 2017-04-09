@@ -1,7 +1,8 @@
 {
   "tokens":{
     "discord":"SECRET",
-    "slack":"SECRET"
+    "slack":"SECRET",
+    "guildId":"SECRET"
   },
   "commands":["roll", "help"],
   "autoresponses":[
