@@ -1,7 +1,7 @@
 {
   "tokens":{
     "discord":"SECRET",
-    "slack":"SECRET"
+    "slack":"SECRET",
     "guildId":"SECRET"
   },
   "chatBridgeConfig":[
