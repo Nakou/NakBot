@@ -89,6 +89,10 @@ public class Conf {
         return retValue;
     }
 
+    public Map<String, Map<String, String>> getChatBridgeConfig(){
+        return null;
+    }
+
     public JDA getJdaConnector(){
         return jda;
     }

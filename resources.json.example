@@ -1,9 +1,24 @@
 {
   "tokens":{
     "discord":"SECRET",
-    "slack":"SECRET",
+    "slack":"SECRET"
     "guildId":"SECRET"
   },
+  "chatBridgeConfig":[
+    {"discord":{
+      "mainId":"SECRET",
+      "general":"",
+      "dev":"",
+      "gamedev":""
+    }},
+    {"slack":{
+      "mainId":"SECRET",
+      "general":"",
+      "dev":"",
+      "gamedev":""
+    }}
+
+  ],
   "commands":["roll", "help"],
   "autoresponses":[
     {
