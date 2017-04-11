@@ -2,6 +2,7 @@ package Bot;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sx.blah.discord.api.IDiscordClient;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +20,8 @@ public class Conf {
     static String confFile = "resources.json";
 
     JSONObject baseJson;
+
+    IDiscordClient discordClient;
 
     private Conf(){
         File file = new File(confFile);
@@ -47,10 +50,6 @@ public class Conf {
 
     public String getSlackToken(){
         return baseJson.getJSONObject("tokens").getString("slack");
-    }
-
-    public String getGuildId(){
-        return baseJson.getJSONObject("tokens").getString("guildId");
     }
 
     public String getDiscordToken(){
@@ -88,6 +87,14 @@ public class Conf {
 
     public Map<String, Map<String, String>> getChatBridgeConfig(){
         return null;
+    }
+
+    public IDiscordClient getDiscordClient(){
+        return this.discordClient;
+    }
+
+    public void setDiscordClient(IDiscordClient discordClient){
+        this.discordClient = discordClient;
     }
 
 }
