@@ -4,6 +4,7 @@
     "slack":"SECRET",
     "guildId":"SECRET"
   },
+  "transfertMessage":"true",
   "chatBridgeConfig":[
     {"discord":{
       "mainId":"SECRET",
