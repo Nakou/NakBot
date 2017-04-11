@@ -97,4 +97,8 @@ public class Conf {
         this.discordClient = discordClient;
     }
 
+    public boolean isTransfertActivated(){
+        return baseJson.getBoolean("transfertMessage");
+    }
+
 }

@@ -1,7 +1,7 @@
 package Bot;
 
-import Bot.Listeners.BotConnectionListener;
-import Bot.Listeners.BotMessageListener;
+import Bot.Listeners.Discord.BotConnectionListener;
+import Bot.Listeners.Discord.BotMessageListener;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
