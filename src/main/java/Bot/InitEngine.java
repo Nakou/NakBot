@@ -1,40 +1,50 @@
-package Engines;
+package Bot;
 
 import Bot.Conf;
 import Bot.Source;
 import Commands.ICommand;
+import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IMessage;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 /**
  * Created by Nakou on 12/04/2017.
  */
-public class InitEngine {
-    public String message;
+public class InitEngine<T> {
+    String messageContent;
+
+    private IMessage iMessage;
+    private T iChannel;
 
     Conf conf;
     private InitEngine(){}
-    public InitEngine(String message, Source source){
+    public InitEngine(String messageContent, Source source, IMessage message, T channel){
         conf = Conf.getInstance();
-        if(checkForCommands(message, source))
+        iMessage = message;
+        iChannel = channel;
+        List<String> parsedMessage = Parser.Parse(messageContent);
+        if(checkForCommands(parsedMessage, source))
             return;
-        if(checkAutoresponses(message, source))
+        if(checkAutoresponses(messageContent, source))
             return;
         if(!conf.isTransfertActivated())
             return;
-        transfertMessage(message, source);
+        transfertMessage(messageContent, source);
     }
 
-    private boolean checkForCommands(String message, Source source) {
-        if(conf.getCommands().contains(message)){
+    private boolean checkForCommands(List<String> message, Source source) {
+        String intendedCommand = message.get(0);
+        if(conf.getCommands().contains(intendedCommand)){
             Class<?> clazz = null;
             Constructor<?> ctor = null;
             try {
-                clazz = Class.forName(message);
+                clazz = Class.forName(intendedCommand);
                 ctor = clazz.getConstructor(String.class);
                 Object object = ctor.newInstance();
-                publish(((ICommand)object).action(message));
+                publish(((ICommand)object).action(intendedCommand));
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -51,4 +61,12 @@ public class InitEngine {
     }
 
     private void publish(String message){}
+
+    public IMessage getiMessage() {
+        return iMessage;
+    }
+
+    public T getiChannel() {
+        return iChannel;
+    }
 }
