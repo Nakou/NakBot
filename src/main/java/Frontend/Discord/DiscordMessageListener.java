@@ -1,24 +1,19 @@
-package Bot.Listeners.Discord;
+package Frontend.Discord;
 
-import Bot.Conf;
-import Bot.InitEngine;
-import Bot.Source;
+import Backend.Bot.InitEngine;
+import Backend.Bot.Source;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sx.blah.discord.api.events.IListener;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
-import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.util.MessageBuilder;
-import sx.blah.discord.util.MissingPermissionsException;
-import sx.blah.discord.util.RateLimitException;
 
 /**
  * Created by abonnet on 11/04/2017.
  */
-public class BotMessageListener implements IListener<MessageReceivedEvent> {
-    Logger logger = LoggerFactory.getLogger(BotMessageListener.class);
+public class DiscordMessageListener implements IListener<MessageReceivedEvent> {
+    Logger logger = LoggerFactory.getLogger(DiscordMessageListener.class);
     @Override
     public void handle(MessageReceivedEvent event) {
         IMessage message = event.getMessage(); // Gets the message from the event object NOTE: This is not the content of the message, but the object itself

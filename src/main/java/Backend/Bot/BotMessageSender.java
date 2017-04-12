@@ -1,4 +1,4 @@
-package Bot;
+package Backend.Bot;
 
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.util.DiscordException;

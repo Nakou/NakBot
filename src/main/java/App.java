@@ -1,4 +1,4 @@
-import Bot.Bot;
+import Backend.Bot.Bot;
 
 /**
  * Created by Nakou on 07/04/2017.

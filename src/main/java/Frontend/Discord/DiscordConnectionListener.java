@@ -1,4 +1,4 @@
-package Bot.Listeners.Discord;
+package Frontend.Discord;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,9 @@ import sx.blah.discord.handle.obj.IUser;
 /**
  * Created by Nakou on 09/04/2017.
  */
-public class BotConnectionListener implements IListener<ReadyEvent> {
+public class DiscordConnectionListener implements IListener<ReadyEvent> {
 
-    Logger logger = LoggerFactory.getLogger(BotConnectionListener.class);
+    Logger logger = LoggerFactory.getLogger(DiscordConnectionListener.class);
 
     @Override
     public void handle(ReadyEvent event) {

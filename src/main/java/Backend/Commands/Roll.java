@@ -1,4 +1,4 @@
-package Commands;
+package Backend.Commands;
 
 import java.util.concurrent.ThreadLocalRandom;
 

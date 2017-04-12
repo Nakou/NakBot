@@ -1,9 +1,6 @@
-package Bot;
+package Backend.Bot;
 
-import Bot.Conf;
-import Bot.Source;
-import Commands.ICommand;
-import sx.blah.discord.handle.obj.IChannel;
+import Backend.Commands.ICommand;
 import sx.blah.discord.handle.obj.IMessage;
 
 import java.lang.reflect.Constructor;

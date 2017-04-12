@@ -18,4 +18,5 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20160810'
     compile "com.github.austinv11:Discord4j:2.7.0"
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+    compile 'com.github.Ullink:simple-slack-api:0.6.0'
 }

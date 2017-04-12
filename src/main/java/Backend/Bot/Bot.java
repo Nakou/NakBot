@@ -1,7 +1,7 @@
-package Bot;
+package Backend.Bot;
 
-import Bot.Listeners.Discord.BotConnectionListener;
-import Bot.Listeners.Discord.BotMessageListener;
+import Frontend.Discord.DiscordConnectionListener;
+import Frontend.Discord.DiscordMessageListener;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
@@ -27,8 +27,8 @@ public class Bot{
         IDiscordClient discordClient;
         try {
             discordClient = clientBuilder.login();
-            discordClient.getDispatcher().registerListener(new BotConnectionListener());
-            discordClient.getDispatcher().registerListener(new BotMessageListener());
+            discordClient.getDispatcher().registerListener(new DiscordConnectionListener());
+            discordClient.getDispatcher().registerListener(new DiscordMessageListener());
         } catch (DiscordException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package Modules;
+package Backend.Modules;
 
 /**
  * Created by Nakou on 07/04/2017.
