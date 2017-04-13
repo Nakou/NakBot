@@ -3,7 +3,7 @@ package Backend.Bot.Internal;
 /**
  * Created by abonnet on 12/04/2017.
  */
-public class Message<T> {
+public class Message<T extends Channel> {
     private Source source;
     private String message;
     private T channel;

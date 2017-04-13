@@ -1,6 +1,6 @@
 package Frontend.Discord;
 
-import Backend.Bot.Internal.InitEngine;
+import Backend.Bot.Internal.Engine;
 import Backend.Bot.Internal.Source;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class DiscordMessageListener implements IListener<MessageReceivedEvent> {
             // Builds (sends) and new message in the channel that the original message was sent with the content of the original message.
             //new MessageBuilder(Conf.getInstance().getDiscordClient()).withChannel(channel).withContent(message.getContent()).build();
             logger.info("New Message : " + message.getContent());
-            new InitEngine(message.getContent(), Source.DISCORD, message, channel);
+            new Engine(message.getContent(), Source.DISCORD, message, channel);
         /*} catch (RateLimitException e) { // RateLimitException thrown. The bot is sending messages too quickly!
             System.err.print("Sending messages too quickly!");
             e.printStackTrace();

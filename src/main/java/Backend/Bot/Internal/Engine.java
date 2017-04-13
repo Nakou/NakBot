@@ -10,15 +10,15 @@ import java.util.List;
 /**
  * Created by Nakou on 12/04/2017.
  */
-public class InitEngine<T> {
+public class Engine<T> {
     String messageContent;
 
     private IMessage iMessage;
     private T iChannel;
 
     Conf conf;
-    private InitEngine(){}
-    public InitEngine(String messageContent, Source source, IMessage message, T channel){
+    private Engine(){}
+    public Engine(String messageContent, Source source, IMessage message, T channel){
         conf = Conf.getInstance();
         iMessage = message;
         iChannel = channel;
