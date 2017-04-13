@@ -1,4 +1,4 @@
-package Backend.Bot;
+package Backend.Bot.Internal;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -1,5 +1,6 @@
 package Backend.Bot;
 
+import Backend.Bot.Internal.Conf;
 import Frontend.Discord.DiscordConnectionListener;
 import Frontend.Discord.DiscordMessageListener;
 import sx.blah.discord.api.ClientBuilder;

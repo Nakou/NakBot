@@ -1,4 +1,4 @@
-package Backend.Bot;
+package Backend.Bot.Internal;
 
 import Backend.Commands.ICommand;
 import sx.blah.discord.handle.obj.IMessage;

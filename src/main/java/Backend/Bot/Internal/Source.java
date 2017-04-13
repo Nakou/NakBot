@@ -1,4 +1,4 @@
-package Backend.Bot;
+package Backend.Bot.Internal;
 
 /**
  * Created by Nakou on 12/04/2017.

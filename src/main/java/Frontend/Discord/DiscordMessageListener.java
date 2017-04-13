@@ -1,7 +1,7 @@
 package Frontend.Discord;
 
-import Backend.Bot.InitEngine;
-import Backend.Bot.Source;
+import Backend.Bot.Internal.InitEngine;
+import Backend.Bot.Internal.Source;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sx.blah.discord.api.events.IListener;
