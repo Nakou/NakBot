@@ -4,7 +4,7 @@ import Backend.Bot.Internal.Message;
 import Frontend.Common.IMessageSender;
 
 /**
- * Created by abonnet on 12/04/2017.
+ * Created by Nakou on 12/04/2017.
  */
 public class DiscordMessageSender implements IMessageSender {
 

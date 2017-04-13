@@ -1,25 +1,28 @@
 package Backend.Bot.Internal;
 
+import Backend.Bot.Internal.Specifics.Stream;
+
 /**
- * Created by abonnet on 12/04/2017.
+ * Created by Nakou on 12/04/2017.
  */
-public class Message<T extends Channel> {
-    private Source source;
+public class Message<T> {
+    private Stream input;
     private String message;
-    private T channel;
+    private Stream output;
+    private T session;
 
-    public Message(Source source, String message, T channel){
-        this.source = source;
+    public Message(Stream input, String message, T session){
+        this.input = input;
         this.message = message;
-        this.channel = channel;
+        this.session = session;
     }
 
-    public Source getSource() {
-        return source;
+    public Stream getInput() {
+        return input;
     }
 
-    public void setSource(Source source) {
-        this.source = source;
+    public void setInput(Stream input) {
+        this.input = input;
     }
 
     public String getMessage() {
@@ -30,11 +33,19 @@ public class Message<T extends Channel> {
         this.message = message;
     }
 
-    public T getChannel() {
-        return channel;
+    public Stream getOutput() {
+        return output;
     }
 
-    public void setChannel(T channel) {
-        this.channel = channel;
+    public void setOutput(Stream output) {
+        this.output = output;
+    }
+
+    public T getSession() {
+        return session;
+    }
+
+    public void setSession(T session) {
+        this.session = session;
     }
 }

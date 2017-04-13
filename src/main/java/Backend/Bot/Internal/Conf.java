@@ -21,7 +21,6 @@ public class Conf {
 
     JSONObject baseJson;
 
-    IDiscordClient discordClient;
 
     private Conf(){
         File file = new File(confFile);
@@ -87,14 +86,6 @@ public class Conf {
 
     public Map<String, Map<String, String>> getChatBridgeConfig(){
         return null;
-    }
-
-    public IDiscordClient getDiscordClient(){
-        return this.discordClient;
-    }
-
-    public void setDiscordClient(IDiscordClient discordClient){
-        this.discordClient = discordClient;
     }
 
     public boolean isTransfertActivated(){
