@@ -1,5 +1,6 @@
 package Backend.Bot.Internal;
 
+import Backend.Bot.Bot;
 import org.slf4j.Logger;
 
 /**
@@ -8,8 +9,13 @@ import org.slf4j.Logger;
 public abstract class AbstractConnector<T> {
     protected T connector;
     protected Logger logger;
+    protected Bot bot;
 
-    public abstract void connectToServer();
+    protected AbstractConnector(Bot bot){
+        this.bot = bot;
+    }
+
+    public abstract void connectToServer(Bot bot);
 
     public T getConnector() {
         return connector;

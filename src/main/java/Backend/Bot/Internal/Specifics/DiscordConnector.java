@@ -1,5 +1,6 @@
 package Backend.Bot.Internal.Specifics;
 
+import Backend.Bot.Bot;
 import Backend.Bot.Internal.AbstractConnector;
 import Backend.Bot.Internal.Conf;
 import Frontend.Discord.DiscordConnectionListener;
@@ -16,7 +17,8 @@ public class DiscordConnector extends AbstractConnector {
 
     ClientBuilder clientBuilder;
 
-    public DiscordConnector(){
+    public DiscordConnector(Bot bot){
+        super(bot);
         logger = LoggerFactory.getLogger(DiscordConnector.class);
         clientBuilder = new ClientBuilder(); // Creates the ClientBuilder instance
         clientBuilder.withToken(Conf.getInstance().getDiscordToken());
@@ -24,12 +26,12 @@ public class DiscordConnector extends AbstractConnector {
     }
 
     @Override
-    public void connectToServer() {
+    public void connectToServer(Bot bot) {
         try {
             connector = clientBuilder.login();
             logger.info("Connection to DiscordServer completed");
-            ((IDiscordClient)connector).getDispatcher().registerListener(new DiscordConnectionListener());
-            ((IDiscordClient)connector).getDispatcher().registerListener(new DiscordMessageListener());
+            ((IDiscordClient)connector).getDispatcher().registerListener(new DiscordConnectionListener(bot));
+            ((IDiscordClient)connector).getDispatcher().registerListener(new DiscordMessageListener(bot));
             logger.info("DiscordServer Listeners loaded");
         } catch (DiscordException e) {
             e.printStackTrace();

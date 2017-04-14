@@ -7,14 +7,18 @@ import Backend.Bot.Internal.Specifics.Stream;
  */
 public class Message<T> {
     private Stream input;
-    private String message;
+    private String content;
     private Stream output;
-    private T session;
+    private T originalMessage;
 
-    public Message(Stream input, String message, T session){
+    public Message(Stream input, String content, T originalMessage){
         this.input = input;
-        this.message = message;
-        this.session = session;
+        this.content = content;
+        this.originalMessage = originalMessage;
+    }
+
+    public Message() {
+
     }
 
     public Stream getInput() {
@@ -25,12 +29,12 @@ public class Message<T> {
         this.input = input;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContent() {
+        return content;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Stream getOutput() {
@@ -41,11 +45,11 @@ public class Message<T> {
         this.output = output;
     }
 
-    public T getSession() {
-        return session;
+    public T getOriginalMessage() {
+        return originalMessage;
     }
 
-    public void setSession(T session) {
-        this.session = session;
+    public void setOriginalMessage(T originalMessage) {
+        this.originalMessage = originalMessage;
     }
 }

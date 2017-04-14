@@ -1,5 +1,6 @@
 package Backend.Bot.Internal.Specifics;
 
+import Backend.Bot.Bot;
 import Backend.Bot.Internal.AbstractConnector;
 import Backend.Bot.Internal.Conf;
 import Frontend.Slack.SlackMessageListener;
@@ -14,20 +15,19 @@ import java.io.IOException;
  */
 public class SlackConnector extends AbstractConnector {
 
-    SlackSession session;
-
-    public SlackConnector(){
+    public SlackConnector(Bot bot){
+        super(bot);
         logger = LoggerFactory.getLogger(DiscordConnector.class);
-        session = SlackSessionFactory.createWebSocketSlackSession(Conf.getInstance().getSlackToken());
+        connector = SlackSessionFactory.createWebSocketSlackSession(Conf.getInstance().getSlackToken());
         logger.info("Slack token initialization");
     }
 
     @Override
-    public void connectToServer() {
+    public void connectToServer(Bot bot) {
         try {
-            session.connect();
+            ((SlackSession)connector).connect();
             logger.info("Connection to Slack completed");
-            session.addMessagePostedListener(new SlackMessageListener());
+            ((SlackSession)connector).addMessagePostedListener(new SlackMessageListener(this.bot));
             logger.info("Slack listener loaded");
         } catch (IOException e) {
             e.printStackTrace();

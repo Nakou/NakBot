@@ -1,5 +1,6 @@
 package Frontend.Discord;
 
+import Backend.Bot.Bot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sx.blah.discord.api.IDiscordClient;
@@ -13,6 +14,13 @@ import sx.blah.discord.handle.obj.IUser;
 public class DiscordConnectionListener implements IListener<ReadyEvent> {
 
     Logger logger = LoggerFactory.getLogger(DiscordConnectionListener.class);
+    Bot bot;
+
+    public DiscordConnectionListener(Bot bot){
+        super();
+        this.bot = bot;
+    }
+
 
     @Override
     public void handle(ReadyEvent event) {

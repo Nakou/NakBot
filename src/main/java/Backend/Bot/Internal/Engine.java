@@ -1,11 +1,7 @@
 package Backend.Bot.Internal;
 
 import Backend.Bot.Internal.Specifics.Stream;
-import Backend.Commands.ICommand;
-import sx.blah.discord.handle.obj.IMessage;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -14,16 +10,19 @@ import java.util.List;
 public class Engine {
 
     Conf conf;
-    Message message;
+    Message incomingMessage;
+    Message outgoingMessage;
 
 
-    public Engine(Message message) {
+    public Engine(Message incomingMessage) {
         this.conf = Conf.getInstance();
-        this.message = message;
+        this.incomingMessage = incomingMessage;
+        this.outgoingMessage = new Message();
     }
 
     public Message goEngine() {
         if(checkForCommands()){
+            outgoingMessage.setOutput(incomingMessage.getInput());
 
         }
         if(checkAutoresponses()){
@@ -36,19 +35,10 @@ public class Engine {
     }
 
     private boolean checkForCommands() {
-        List<String> message = Parser.Parse(this.message.getMessage());
+        List<String> message = Parser.Parse(this.incomingMessage.getContent());
         String intendedCommand = message.get(0);
         if(conf.getCommands().contains(intendedCommand)){
-            Class<?> clazz = null;
-            Constructor<?> ctor = null;
-            try {
-                clazz = Class.forName(intendedCommand);
-                ctor = clazz.getConstructor(String.class);
-                Object object = ctor.newInstance();
-                //buildMessage(((ICommand)object).action(intendedCommand));
-            } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | InvocationTargetException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
+            return true;
         }
         return false;
     }
@@ -64,5 +54,7 @@ public class Engine {
         return null;
     }
 
-
+    public void sendResponse() {
+        // use outgoingMessage
+    }
 }

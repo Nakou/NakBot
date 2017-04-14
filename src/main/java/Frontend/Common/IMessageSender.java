@@ -5,6 +5,6 @@ import Backend.Bot.Internal.Message;
 /**
  * Created by Nakou on 13/04/2017.
  */
-public interface IMessageSender {
-    boolean sendMessage(Message message);
+public interface IMessageSender<T> {
+    boolean sendMessage(Message message, T session);
 }
