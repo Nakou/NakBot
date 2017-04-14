@@ -35,7 +35,7 @@ public class Bot{
             public void run(){
                 Engine engine = new Engine(message);
                 engine.goEngine();
-                engine.sendResponse(connectors);
+                engine.sendResponse();
             }
         };
     }
