@@ -5,16 +5,18 @@ import Backend.Bot.Internal.Specifics.Stream;
 /**
  * Created by Nakou on 12/04/2017.
  */
-public class Message<T> {
+public class Message {
     private Stream input;
     private String content;
     private Stream output;
-    private T originalMessage;
+    private String channelKey;
+    private String authorName;
 
-    public Message(Stream input, String content, T originalMessage){
+    public Message(Stream input, String content, String channelKey, String authorName){
         this.input = input;
         this.content = content;
-        this.originalMessage = originalMessage;
+        this.channelKey = channelKey;
+        this.authorName = authorName;
     }
 
     public Message() {
@@ -45,11 +47,36 @@ public class Message<T> {
         this.output = output;
     }
 
-    public T getOriginalMessage() {
-        return originalMessage;
+    public String getChannelKey() {
+        return channelKey;
     }
 
-    public void setOriginalMessage(T originalMessage) {
-        this.originalMessage = originalMessage;
+    public void setChannelKey(String channelKey) {
+        this.channelKey = channelKey;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    @Override
+    public String toString(){
+        String value = "[";
+        if(input != null)
+            value += "INPUT:"+input.toString();
+        if(output != null)
+            value += "OUTPUT:"+output.toString();
+        if(authorName != null)
+            value += "authorName:"+authorName;
+        if(channelKey != null)
+            value += "channelKey:"+channelKey;
+        if(content != null)
+            value += "content:"+content;
+        value += "]";
+        return value;
     }
 }

@@ -30,13 +30,14 @@ public class Bot{
         }
     }
 
-    public void CallProcess(Message message){
+    public void CallProcess(final Message message){
         Thread thread = new Thread(){
             public void run(){
                 Engine engine = new Engine(message);
                 engine.goEngine();
-                engine.sendResponse();
+                engine.sendResponse(connectors);
             }
         };
+        thread.run();
     }
 }

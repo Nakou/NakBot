@@ -28,7 +28,8 @@ public class DiscordMessageListener implements IListener<MessageReceivedEvent> {
     public void handle(MessageReceivedEvent event) {
         IMessage message = event.getMessage(); // Gets the message from the event object NOTE: This is not the content of the message, but the object itself
         IChannel channel = message.getChannel(); // Gets the channel in which this message was sent.
-        logger.info("New Message : " + message.getContent());
-        bot.CallProcess(new Message(Stream.DISCORD, message.getContent(), message));
+        logger.info("[DISCORD] New Message from "+ message.getAuthor().getName() + " in #" + channel.getName() + ": " + message.getContent());
+        Message newMessage = new Message(Stream.DISCORD, message.getContent(), channel.getName(), message.getAuthor().getName());
+        bot.CallProcess(newMessage);
     }
 }
