@@ -7,4 +7,5 @@ import Backend.Bot.Internal.Message;
  */
 public interface IMessageSender<T> {
     boolean sendMessage(Message message, T session);
+    boolean isChannelAccessible(String channel, T session);
 }

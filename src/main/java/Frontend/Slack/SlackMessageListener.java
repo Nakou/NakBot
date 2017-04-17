@@ -1,6 +1,7 @@
 package Frontend.Slack;
 
 import Backend.Bot.Bot;
+import Backend.Bot.Internal.Conf;
 import Backend.Bot.Internal.Message;
 import Backend.Bot.Internal.Specifics.Stream;
 import com.ullink.slack.simpleslackapi.SlackChannel;
@@ -29,8 +30,11 @@ public class SlackMessageListener implements SlackMessagePostedListener {
         SlackChannel channelOnWhichMessageWasPosted = event.getChannel();
         String messageContent = event.getMessageContent();
         SlackUser messageSender = event.getSender();
+        if(messageSender.getUserName().toLowerCase().contains(Conf.getInstance().getBotName().toLowerCase())){
+            return;
+        }
         logger.info("[SLACK] New Message from "+ messageSender.getUserName() + " in #" + channelOnWhichMessageWasPosted.getName() + ": " + messageContent);
-        Message newMessage = new Message(Stream.DISCORD, messageContent, channelOnWhichMessageWasPosted.getName(), messageSender.getUserName());
+        Message newMessage = new Message(Stream.SLACK, messageContent, channelOnWhichMessageWasPosted.getName(), messageSender.getUserName());
         bot.CallProcess(newMessage);
     }
 }

@@ -15,9 +15,9 @@ import java.util.Map;
  */
 public class Engine {
 
-    Conf conf;
-    Message incomingMessage;
-    Message outgoingMessage;
+    private Conf conf;
+    private Message incomingMessage;
+    private Message outgoingMessage;
     Logger logger = LoggerFactory.getLogger(Engine.class);
 
     public Engine(Message incomingMessage) {
@@ -61,17 +61,21 @@ public class Engine {
     }
 
     private void transfertMessage(){
+        String origin = "";
         switch (incomingMessage.getInput()){
             case DISCORD:
                 outgoingMessage.setOutput(Stream.SLACK);
+                origin = "Discord";
                 break;
             case SLACK:
                 outgoingMessage.setOutput(Stream.DISCORD);
+                origin = "Slack";
                 break;
             default:
                 break;
         }
-        outgoingMessage.setContent(incomingMessage.getContent());
+        String content = "Message posted on [" + origin + "] by @" + incomingMessage.getAuthorName() + " : " + incomingMessage.getContent();
+        outgoingMessage.setContent(content);
         outgoingMessage.setAuthorName(incomingMessage.getAuthorName());
         outgoingMessage.setChannelKey(incomingMessage.getChannelKey());
     }

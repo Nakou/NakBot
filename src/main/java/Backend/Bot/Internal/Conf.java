@@ -55,6 +55,10 @@ public class Conf {
         return baseJson.getJSONObject("tokens").getString("discord");
     }
 
+    public String getBotName(){
+        return baseJson.getString("botName");
+    }
+
     public List<String> getCommands(){
         List<String> retValue = new ArrayList<>();
         JSONArray jsonList = baseJson.getJSONArray("commands");
