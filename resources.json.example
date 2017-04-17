@@ -1,25 +1,10 @@
 {
+  "botName":"NakBot",
   "tokens":{
     "discord":"SECRET",
     "slack":"SECRET",
-    "guildId":"SECRET"
   },
   "transfertMessage":"true",
-  "chatBridgeConfig":[
-    {"discord":{
-      "mainId":"SECRET",
-      "general":"",
-      "dev":"",
-      "gamedev":""
-    }},
-    {"slack":{
-      "mainId":"SECRET",
-      "general":"",
-      "dev":"",
-      "gamedev":""
-    }}
-
-  ],
   "commands":["roll", "help"],
   "autoresponses":[
     {

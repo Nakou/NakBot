@@ -88,30 +88,6 @@ public class Conf {
         return retValue;
     }
 
-    public Map<String, Map<String,String>> getBridgeConfig(){
-        Map<String, Map<String,String>> retValue = new HashMap<>();
-
-        JSONArray chatBridgeConfigArray = baseJson.getJSONArray("chatBridgeConfig");
-        Map<String, String> newMap;
-        String stream = "";
-        for(Object o1 : chatBridgeConfigArray){
-            Map<String, Object> map = ((JSONObject)o1).toMap();
-            newMap = new HashMap<>();
-            for(Map.Entry<String, Object> entry : map.entrySet()) {
-                if("stream".equals(entry.getKey())){
-                    stream = (String) entry.getValue();
-                } else {
-                    newMap.put(entry.getKey(), (String) entry.getValue());
-                }
-                retValue.put(stream,newMap);
-            }
-        }
-        if(retValue.containsKey("")){
-            retValue.remove("");
-        }
-        return retValue;
-    }
-
     public Map<String, Map<String, String>> getChatBridgeConfig(){
         return null;
     }
