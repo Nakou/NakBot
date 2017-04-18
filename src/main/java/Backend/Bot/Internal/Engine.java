@@ -28,13 +28,13 @@ public class Engine {
 
     public void goEngine() {
         if(checkForCommands()){
-            outgoingMessage.setOutput(incomingMessage.getInput());
+            outgoingMessage.setStream(incomingMessage.getStream());
             outgoingMessage.setContent(Commands.buildCommandResponse(incomingMessage.getContent()));
             outgoingMessage.setAuthorName(incomingMessage.getAuthorName());
             outgoingMessage.setChannelKey(incomingMessage.getChannelKey());
         }
         if(checkAutoresponses()){
-            outgoingMessage.setOutput(incomingMessage.getInput());
+            outgoingMessage.setStream(incomingMessage.getStream());
             outgoingMessage.setContent(Commands.buildAutoresponse(incomingMessage.getContent()));
             outgoingMessage.setAuthorName(incomingMessage.getAuthorName());
             outgoingMessage.setChannelKey(incomingMessage.getChannelKey());
@@ -62,13 +62,13 @@ public class Engine {
 
     private void transfertMessage(){
         String origin = "";
-        switch (incomingMessage.getInput()){
+        switch (incomingMessage.getStream()){
             case DISCORD:
-                outgoingMessage.setOutput(Stream.SLACK);
+                outgoingMessage.setStream(Stream.SLACK);
                 origin = "Discord";
                 break;
             case SLACK:
-                outgoingMessage.setOutput(Stream.DISCORD);
+                outgoingMessage.setStream(Stream.DISCORD);
                 origin = "Slack";
                 break;
             default:
@@ -81,7 +81,7 @@ public class Engine {
     }
 
     public void sendResponse(Map<Stream, AbstractConnector> connectors) {
-        switch (outgoingMessage.getOutput()){
+        switch (outgoingMessage.getStream()){
             case DISCORD:
                 new DiscordMessageSender().sendMessage(outgoingMessage, connectors.get(Stream.DISCORD));
                 break;

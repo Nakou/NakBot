@@ -88,10 +88,6 @@ public class Conf {
         return retValue;
     }
 
-    public Map<String, Map<String, String>> getChatBridgeConfig(){
-        return null;
-    }
-
     public boolean isTransfertActivated(){
         return baseJson.getBoolean("transfertMessage");
     }
